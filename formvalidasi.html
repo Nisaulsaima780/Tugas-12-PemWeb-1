@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validasi Tugas Ke 5</title>
+    <link rel="stylesheet" href="formvalidasi.css">
+</head>
+<body>
+    <fieldset> 
+    <h1>Data Pelanggan</h1>
+    <form id="myForm" onsubmit="validateForm(event)">
+        <label for="name">Nama Pelanggan:</label>
+        <input type="text" id="name" name="name" required>
+        <span id="nameError" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error"></span>
+
+        <label for="departureTime">Jam Keberangkatan:</label>
+        <input type="text" id="departureTime" name="departureTime" required>
+        <span id="departureTimeError" class="error"></span>
+
+        <label for="destination">Tujuan Keberangkatan:</label>
+        <input type="text" id="destination" name="destination" required>
+        <span id="destinationError" class="error"></span>
+
+        <label for="ticketAmount">Jumlah Tiket:</label>
+        <input type="number" id="ticketAmount" name="ticketAmount" required>
+        <span id="ticketAmountError" class="error"></span>
+
+        <button type="submit" value="Submit">Submit</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let departureTime = document.getElementById("departureTime").value;
+            let destination = document.getElementById("destination").value;
+            let ticketAmount = document.getElementById("ticketAmount").value;
+
+            let nameError = document.getElementById("nameError");
+            let emailError = document.getElementById("emailError");
+            let departureTimeError = document.getElementById("departureTimeError");
+            let destinationError = document.getElementById("destinationError");
+            let ticketAmountError = document.getElementById("ticketAmountError");
+
+            nameError.textContent = "";
+            emailError.textContent = "";
+            departureTimeError.textContent = "";
+            destinationError.textContent = "";
+            ticketAmountError.textContent = "";
+
+            if (name === "") {
+                nameError.textContent = "Nama harus diisi";
+                return false;
+            }
+
+            if (email === "") {
+                emailError.textContent = "Email harus diisi";
+                return false;
+            }
+
+            if (departureTime === "") {
+                departureTimeError.textContent = "Jam Keberangkatan harus diisi";
+                return false;
+            }
+
+            if (destination === "") {
+                destinationError.textContent = "Tujuan Keberangkatan harus diisi";
+                return false;
+            }
+
+            if (ticketAmount === "") {
+                ticketAmountError.textContent = "Jumlah Tiket harus diisi";
+                return false;
+            }
+
+            if (ticketAmount < 1 || ticketAmount > 10) {
+                ticketAmountError.textContent = "Jumlah Tiket harus antara 1 - 10";
+                return false;
+            }
+
+            // Jika semua validasi berhasil, tampilkan data form
+            let output = document.getElementById("output");
+            output.innerHTML = "<h2>Data Form:</h2>" +
+                              "<p>Nama Pelanggan: " + name + "</p>" +
+                              "<p>Email: " + email + "</p>" +
+                              "<p>Jam Keberangkatan: " + departureTime + "</p>" +
+                              "<p>Tujuan Keberangkatan: " + destination + "</p>" +
+                              "<p>Jumlah Tiket: " + ticketAmount + "</p>";
+
+            document.getElementById("myForm").reset();
+        }
+    </script>
+    </fieldset>
+</body>
+</html>

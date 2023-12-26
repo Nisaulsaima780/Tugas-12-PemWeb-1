@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoginTugas12</title>
+    <style>
+     form{width: 500px; margin: auto}
+
+    fieldset {
+    padding: 1em;
+    font:80%/1 sans-serif;
+    border:5px solid #35d5cf
+    }   
+    </style>
+</head>
+<body>
+
+    </div>
+    <center>
+    <fieldset>
+        <h2>Login Untuk Masuk</h2>
+        <label for="username">Username</label>        
+        <input type="text" id="username">        
+        <label for="password">Password</label>        
+        <input type="password" id="password">        
+        <button onclick="login()">Click</button>
+    </center>    
+        
+        <script>
+            function login(){                
+                let username = document.getElementById('username').value;                
+                let password = document.getElementById('password').value;
+    
+                console.log(username);
+                console.log(password);
+    
+                if (username == "saima2006" && password == "padangsidimpuan") {
+                    location.href = "LoginBerhasil.html";
+                } else {
+                    alert('username atau password salah');
+                }
+            }
+        </script>
+    </fieldset>
+</body>
+</html>
